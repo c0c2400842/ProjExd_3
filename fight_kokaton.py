@@ -175,6 +175,7 @@ def main():
     bombs = [Bomb((255, 0, 0), 10) for _ in range(NUM_OF_BOMBS)]
     score=Score()
     clock = pg.time.Clock()
+    beam_list=[]
     tmr = 0
     while True:
         for event in pg.event.get():
@@ -183,6 +184,13 @@ def main():
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 # スペースキー押下でBeamクラスのインスタンス生成
                 beam = Beam(bird)
+                beam_list.append(beam)
+                for i  in beam_list:
+                    if i == None:
+                    beam_list
+                if 
+
+
         screen.blit(bg_img, [0, 0])
         
 
