@@ -146,7 +146,7 @@ def main():
     screen = pg.display.set_mode((WIDTH, HEIGHT))    
     bg_img = pg.image.load("fig/pg_bg.jpg")
     bird = Bird((300, 200))
-    beam = None
+    beam = None 
     # bomb = Bomb((255, 0, 0), 10)
     bombs = []
     # for i in range(NUM_OF_BOMBS):
@@ -174,12 +174,13 @@ def main():
                     time.sleep(1)  #1秒間こうかとん泣いてる
                     return
         
-        if beam is not None:
-            for j, in bomb in enumerate(bombs):
+            #if bomb is not None:
+        for j, bomb in enumerate(bombs):
+            if beam is not None:
                 if beam.rct.colliderect(bomb.rct):  #ビームとボムの衝突判定
                     beam = None  #ビームを消す
                     bombs[j] = None  #爆弾を消す
-                    bird.change_img(6, screen)
+                    bird.change_img(6, screen) #喜びエフェクト
             bombs = [bomb for bomb in bombs if bomb is not None] #撃ち落されてない爆弾だけのリスト
 
         key_lst = pg.key.get_pressed()
