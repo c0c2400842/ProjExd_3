@@ -157,6 +157,9 @@ class Score:
             
         
         def update(self, screen):
+            """
+            受け取った"撃ち落した爆弾の数"を表示します。
+            """
             self.txt = self.fonto.render(f"score:{self.score}", 0, (0, 0, 255))
             screen.blit(self.txt, self.rct)
 
