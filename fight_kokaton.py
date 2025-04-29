@@ -155,7 +155,7 @@ def main():
                 return
             if event.type == pg.KEYDOWN and event.key == pg.K_SPACE:
                 # スペースキー押下でBeamクラスのインスタンス生成
-                beam = Beam(bird)            
+                beam = Beam(bird)
         screen.blit(bg_img, [0, 0])
         
 
@@ -164,6 +164,10 @@ def main():
             if bird.rct.colliderect(bomb.rct):
                 # ゲームオーバー時に，こうかとん画像を切り替え，1秒間表示させる
                 bird.change_img(8, screen)
+                #ゲームオーバー文字列を表示
+                fonto = pg.font.Font(None, 80)
+                txt = fonto.render("Game Over", True, (255, 0, 0))
+                screen.blit(txt, [WIDTH//2-150, HEIGHT//2])
                 pg.display.update()
                 time.sleep(1)  #1秒間こうかとん泣いてる
                 return
@@ -173,7 +177,7 @@ def main():
                 if beam.rct.colliderect(bomb.rct):  #ビームとボムの衝突判定
                     beam = None  #ビームを消す
                     bomb = None  #爆弾を消す
-                    bird.change_img(6, screen)
+                    bird.change_img(6, screen)#撃墜喜びエフェクト
 
         key_lst = pg.key.get_pressed()
         bird.update(key_lst, screen)
